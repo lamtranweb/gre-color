@@ -1,0 +1,22 @@
+{
+  "name": "@gre/color",
+  "version": "0.1.0",
+  "description": "Color utilities",
+  "main": "src/index.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/lamtranweb/gre-color.git"
+  },
+  "author": "Lam Tran <lamtran@gmail.com> (http://lamtran.com/)",
+  "license": "MIT",
+  "bugs": {
+    "url": "https://github.com/lamtranweb/gre-color/issues"
+  },
+  "homepage": "https://github.com/lamtranweb/gre-color#readme",
+  "dependencies": {
+    "parse-color": "1.0.0"
+  }
+}
