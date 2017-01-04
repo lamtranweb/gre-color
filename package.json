@@ -4,7 +4,7 @@
   "description": "Color utilities",
   "main": "src/index.js",
   "scripts": {
-    "commit": "git-cz"
+    "commit": "git-cz",
     "test": "jasmine-node src",
     "semantic-release": "semantic-release pre && npm publish && semantic-release post"
   },
