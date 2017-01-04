@@ -5,7 +5,7 @@
   "main": "src/index.js",
   "scripts": {
     "commit": "git-cz",
-    "test": "jasmine-node src",
+    "test": "istanbul cover -x **/*Spec.js --include-all-sources jasmine-node src",
     "semantic-release": "semantic-release pre && npm publish && semantic-release post"
   },
   "repository": {
@@ -25,6 +25,7 @@
     "commitizen": "2.9.3",
     "cz-conventional-changelog": "1.2.0",
     "ghooks": "2.0.0",
+    "istanbul": "0.4.5",
     "jasmine-node": "1.14.5",
     "semantic-release": "^6.3.2"
   },
