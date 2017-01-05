@@ -1,4 +1,4 @@
-var parse = require('parse-color')
+import parse from 'parse-color'
 
 /*const getLinearChannelValue = (c) => {
   c = c / 255;
