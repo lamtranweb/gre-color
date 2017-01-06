@@ -13,6 +13,7 @@ const rgba = (color, alpha) => {
   return 'rgba('+parse(`rgb(${parse(color).rgb.join(',')}, ${alpha})`).rgba.join(', ')+')';
 }
 
+// color constants
 const black = '#000', white = '#FFF';
 
 const getRed = parseColor.bind(undefined, 0),
