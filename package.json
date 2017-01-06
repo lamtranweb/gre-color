@@ -9,7 +9,7 @@
     "report-coverage": "cat ./coverage/lcov.info | codecov",
     "test": "mocha src --compilers js:babel-register",
     "test:watch": "npm t -- -w",
-    "cover": "nyc npm t",
+    "cover": "nyc --reporter=lcov npm t",
     "prebuild": "rimraf dist",
     "build": "babel --copy-files --out-dir dist --ignore **/*.test.js src",
     "semantic-release": "semantic-release pre && npm publish && semantic-release post"

@@ -3,3 +3,6 @@ coverage
 npm-debug.log
 dist
 .nyc_output
+gre-color.sublime-project
+gre-color.sublime-workspace
+yarn.lock
