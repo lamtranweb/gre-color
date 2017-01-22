@@ -1,4 +1,4 @@
-import parse from 'parse-color'
+var parse = require('parse-color')
 
 const getLinearChannelValue = (c) => {
   c = c / 255;
@@ -59,6 +59,90 @@ const lightOrDark = (color) => {
   }
 }
 
+const getString = (aStr) => {
+  let a;
+
+  if (aStr === undefined) {
+    return "";
+  }
+
+  if (typeof aStr === 'string') {
+    a = aStr
+  } else if (typeof aStr === 'number') {
+    a = aStr + "";
+  } else {
+    throw ("Can only handle numbers or strings as arguments")
+  }
+
+  return a;
+}
+
+const computeMath = (mathMethod, aStr) => {
+  let a = getString(aStr),
+      aValue = parseFloat(a),
+      aUnit = a.split(aValue)[1],
+      total;
+
+  switch(mathMethod) {
+    case 'floor':
+      total = Math.floor(aValue);
+      break;
+    case 'ceil':
+      total = Math.ceil(aValue);
+    break;
+  }
+
+  total += aUnit;
+
+  return total;
+}
+
+/* add two units (px, rem, whatever) */
+const compute = (mathMethod, aStr, bStr) => {
+  if (bStr === undefined) {
+    return computeMath(mathMethod, aStr);
+  }
+
+  let a = getString(aStr), b = getString(bStr),
+      aValue = parseFloat(a),
+      aUnit = a.split(aValue)[1],
+      bValue = parseFloat(b),
+      bUnit = b.split(bValue)[1],
+      total;
+
+  switch(mathMethod) {
+    case '+':
+      total = aValue + bValue;
+    break;
+    case '-':
+      total = aValue - bValue;
+    break;
+    case '*':
+      total = aValue * bValue;
+    break;
+    case '/':
+      total = aValue / bValue;
+    break;
+    case '%':
+      total = aValue % bValue;
+    break;
+    case 'floor':
+      total = Math.floor(aValue);
+      break;
+    case 'ceil':
+      total = Math.ceil(aValue);
+    break;
+  }
+
+  if (aUnit == bUnit || (aUnit == '' && bUnit != '')) {
+    total += bUnit;
+  } else if(aUnit != '' && bUnit == '') {
+    total += aUnit;
+  }
+
+  return total;
+}
+
 module.exports = {
   luminance,
   contrast,
@@ -68,5 +152,6 @@ module.exports = {
   getBlue,
   white,
   black,
-  rgba
+  rgba,
+  compute
 }

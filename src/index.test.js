@@ -44,4 +44,52 @@ describe('color utils', () => {
   it('dark', function() {
     expect(lib.lightOrDark('#FFF')).to.equal('dark');
   })
+
+  it('computes +', function() {
+    expect(lib.compute('+', 2, 2)).to.equal('4');
+  })
+
+  it('computes -', function() {
+    expect(lib.compute('-', 3, 2)).to.equal('1');
+  })
+
+  it('computes *', function() {
+    expect(lib.compute('*', 3, 2)).to.equal('6');
+  })
+
+  it('computes /', function() {
+    expect(lib.compute('/', 4, 2)).to.equal('2');
+  })
+
+  it('computes %', function() {
+    expect(lib.compute('%', 3, 2)).to.equal('1');
+  })
+
+  it('computes floor', function() {
+    expect(lib.compute('floor', 3.1)).to.equal('3');
+  })
+
+  it('computes ceil', function() {
+    expect(lib.compute('ceil', 3.1)).to.equal('4');
+  })
+
+  it('computes with mixed types', function() {
+    expect(lib.compute('+', '3', 2)).to.equal('5');
+  })
+
+  it('computes with mixed types', function() {
+    expect(lib.compute('+', 3, '2')).to.equal('5');
+  })
+
+  it('computes with mixed units - only first params has it', function() {
+    expect(lib.compute('+', '3px', 2)).to.equal('5px');
+  })
+
+  it('computes with mixed units - only second params has it', function() {
+    expect(lib.compute('+', '3', '2px')).to.equal('5px');
+  })
+
+  it('computes with mixed units - mixed units, return no units', function() {
+    expect(lib.compute('+', '3rem', '2px')).to.equal(5);
+  })
 })
