@@ -62,10 +62,6 @@ const lightOrDark = (color) => {
 const getString = (aStr) => {
   let a;
 
-  if (aStr === undefined) {
-    return "";
-  }
-
   if (typeof aStr === 'string') {
     a = aStr
   } else if (typeof aStr === 'number') {
@@ -99,6 +95,10 @@ const computeMath = (mathMethod, aStr) => {
 
 /* add two units (px, rem, whatever) */
 const compute = (mathMethod, aStr, bStr) => {
+  if (arguments.length === 1 || aStr === undefined) {
+    throw 'Required parameters are missing'
+  }
+
   if (bStr === undefined) {
     return computeMath(mathMethod, aStr);
   }
@@ -125,12 +125,6 @@ const compute = (mathMethod, aStr, bStr) => {
     break;
     case '%':
       total = aValue % bValue;
-    break;
-    case 'floor':
-      total = Math.floor(aValue);
-      break;
-    case 'ceil':
-      total = Math.ceil(aValue);
     break;
   }
 

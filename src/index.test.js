@@ -45,6 +45,18 @@ describe('color utils', () => {
     expect(lib.lightOrDark('#FFF')).to.equal('dark');
   })
 
+  it('computes + with no arguments', function() {
+    expect(function() { lib.compute('+'); }).to.throw('Required parameters are missing');
+  })
+
+  it('computes + with no arguments 1', function() {
+    expect(function() { lib.compute('+', undefined, 1); }).to.throw('Required parameters are missing');
+  })
+
+  it('computes + with wrong arguments', function() {
+    expect(function() { lib.compute('+', {}); }).to.throw('Can only handle numbers or strings as arguments');
+  })
+
   it('computes +', function() {
     expect(lib.compute('+', 2, 2)).to.equal('4');
   })
